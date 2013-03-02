@@ -1,8 +1,3 @@
-PATH
-  remote: vendor/gems/pg_copy
-  specs:
-    pg_copy (0.0.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -118,7 +113,6 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
   pg
-  pg_copy!
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
