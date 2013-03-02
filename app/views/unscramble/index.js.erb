@@ -1,7 +1,6 @@
-$('#unscrambled_words').html('');
+$('#spinner').hide();
 
 <%if @unscrambled_words.present?%>
-  $('#no_matches_found').hide();
   
   <%@unscrambled_words.each do |word|%>
     $('#unscrambled_words').append("<p><%=word%></p>");

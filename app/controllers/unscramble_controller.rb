@@ -7,7 +7,6 @@ class UnscrambleController < ApplicationController
   def index
     @unscrambled_words = []
     scrambled_words = params[:scrambled_words]
-    scrambled_words ||= ""
 
     scrambled_words.split.each do |word|
       @unscrambled_words += WordProcessor.unscramble word

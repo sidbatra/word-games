@@ -22,7 +22,8 @@
 
     <%=form_tag unscramble_index_path, 
         :method => :get, 
-        :remote => true do %>
+        :remote => true,
+        :id => "unscramble" do%>
 
       <input id="scrambled_word" 
         name="scrambled_words"
@@ -31,10 +32,14 @@
 
     <%end%>
 
+    <%=image_tag "spinner.gif", 
+        :id => :spinner,
+        :style => "display:none"%>
+
     <div id="no_matches_found" class="row" style="display: none">
       <div class="span3 offset3">
-        <div class="alert">
-          Sorry, no match found.
+        <div class="alert text-center">
+          Sorry, no jumbles found.
         </div>
       </div>
     </div>
@@ -58,7 +63,12 @@
 
 <%=content_for :javascript do%>
 <script type="text/javascript">
-    $('#scrambled_word').focus();
+  $('#scrambled_word').focus();
+
+  $('#unscramble').submit(function(){
+    $('#no_matches_found').hide();
+    $('#unscrambled_words').html('');
+  });
 </script>
 <%end%>
 
