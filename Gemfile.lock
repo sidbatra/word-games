@@ -1,3 +1,9 @@
+GIT
+  remote: git@github.com:Identified/pg_copy.git
+  revision: 485ff3fe7c7d4e9f8b59fcf357754873a7cb2164
+  specs:
+    pg_copy (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -113,6 +119,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
   pg
+  pg_copy!
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)

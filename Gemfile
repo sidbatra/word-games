@@ -7,6 +7,7 @@ gem 'rails', '3.2.12'
 
 gem 'pg'
 
+gem 'pg_copy', git: 'git@github.com:Identified/pg_copy.git'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -19,6 +20,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
+
 
 gem 'jquery-rails'
 
