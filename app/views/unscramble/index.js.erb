@@ -1,0 +1,12 @@
+$('#unscrambled_words').html('');
+
+<%if @unscrambled_words.present?%>
+  $('#no_matches_found').hide();
+  
+  <%@unscrambled_words.each do |word|%>
+    $('#unscrambled_words').append("<p><%=word%></p>");
+  <%end%>
+
+<%else%>
+  $('#no_matches_found').show();
+<%end%>

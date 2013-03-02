@@ -1,1 +1,64 @@
-well hello
+<div class="container-narrow">
+
+  <div class="masthead">
+    <!--ul class="nav nav-pills pull-right">
+      <li class="active"><a href="#">Jumble</a></li>
+      <li><a href="#">Anagram</a></li>
+      <li><a href="#">Crossword</a></li>
+    </ul-->
+    <h3 class="muted">Word Games</h3>
+  </div>
+
+  <hr>
+
+  <div class="jumbotron">
+    <h1>
+      Jumble Solver
+    </h1>
+
+    <p class="lead">
+      Type a jumbled word in the box & press enter
+    </p> 
+
+    <%=form_tag unscramble_index_path, 
+        :method => :get, 
+        :remote => true do %>
+
+      <input id="scrambled_word" 
+        name="scrambled_words"
+        type="text" 
+        class="input-xlarge">
+
+    <%end%>
+
+    <div id="no_matches_found" class="row" style="display: none">
+      <div class="span3 offset3">
+        <div class="alert">
+          Sorry, no match found.
+        </div>
+      </div>
+    </div>
+
+    <div id="unscrambled_words">
+    </div>
+    
+  </div>
+
+  <hr>
+
+  <div class="footer">
+    <p>Made with love by 
+      <%=link_to "@sidbatra",
+          "http://twitter.com/sidbatra",
+          :target => "_blank"%>
+    </p>
+  </div>
+
+</div> <!-- /container -->
+
+<%=content_for :javascript do%>
+<script type="text/javascript">
+    $('#scrambled_word').focus();
+</script>
+<%end%>
+

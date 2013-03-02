@@ -1,0 +1,11 @@
+#unscrambled_words {
+  font-size: 30px;
+  margin-top: 5px;
+  line-height: 30px;
+}
+
+#scrambled_word {
+  margin-top: 3px;
+  font-size: 20px;
+  height: 34px;
+}
