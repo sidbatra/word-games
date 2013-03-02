@@ -1,6 +1,5 @@
-GIT
-  remote: git@github.com:Identified/pg_copy.git
-  revision: 485ff3fe7c7d4e9f8b59fcf357754873a7cb2164
+PATH
+  remote: vendor/gems/pg_copy
   specs:
     pg_copy (0.0.1)
 

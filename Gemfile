@@ -7,7 +7,7 @@ gem 'rails', '3.2.12'
 
 gem 'pg'
 
-gem 'pg_copy', git: 'git@github.com:Identified/pg_copy.git'
+gem 'pg_copy', :path => "#{File.expand_path(__FILE__)}/../vendor/gems/pg_copy"
 
 # Gems used only for assets and not required
 # in production environments by default.
