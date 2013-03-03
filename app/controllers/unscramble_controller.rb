@@ -11,6 +11,10 @@ class UnscrambleController < ApplicationController
     scrambled_words.split.each do |word|
       @unscrambled_words += WordProcessor.unscramble word
     end
+
+    Query.create :text => scrambled_words,
+            :ip => request.remote_ip,
+            :operation => 0
   end
 
 end
