@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303021933) do
+ActiveRecord::Schema.define(:version => 20130331042829) do
 
   create_table "queries", :force => true do |t|
     t.string   "text"
@@ -26,10 +26,12 @@ ActiveRecord::Schema.define(:version => 20130303021933) do
   create_table "words", :force => true do |t|
     t.string   "text"
     t.string   "sorted_text"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "frequency",   :default => 0
   end
 
+  add_index "words", ["frequency"], :name => "index_words_on_frequency"
   add_index "words", ["sorted_text"], :name => "index_words_on_sorted_text"
   add_index "words", ["text"], :name => "index_words_on_text", :unique => true
 
