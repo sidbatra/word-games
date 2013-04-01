@@ -4,7 +4,9 @@ module WordProcessor
   # dictionary words that it matches.
   #
   def self.unscramble(scrambled_word)
-    Word.where(sorted_text: scrambled_word.split(//).sort.join).pluck(:text)
+    Word.where(sorted_text: scrambled_word.split(//).sort.join).
+      order("frequency DESC").
+      pluck(:text)
   end
 
   # Generate anagrams of length 3 and above from the given word.
