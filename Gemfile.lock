@@ -105,6 +105,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    upsert (1.1.7)
 
 PLATFORMS
   ruby
@@ -117,3 +118,4 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
   unicorn
+  upsert
