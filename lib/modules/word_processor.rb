@@ -9,6 +9,15 @@ module WordProcessor
       pluck(:text)
   end
 
+  # Given a word containing multiple ? return all dictionary words
+  # that match it's given pattern.
+  #
+  def self.fill_in_the_blanks(word)
+    Word.where("text like ?",word.gsub('?','_')).
+      order("frequency DESC").
+      pluck(:text)
+  end
+
   # Generate anagrams of length 3 and above from the given word.
   #
   def self.anagram(word)

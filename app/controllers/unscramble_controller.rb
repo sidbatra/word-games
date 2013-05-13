@@ -9,7 +9,9 @@ class UnscrambleController < ApplicationController
     scrambled_words = params[:scrambled_words].downcase
 
     scrambled_words.split.each do |word|
-      @unscrambled_words += WordProcessor.unscramble word
+      @unscrambled_words += word.include?('?') ?
+                              WordProcessor.fill_in_the_blanks(word) :
+                              WordProcessor.unscramble(word)
     end
 
     Query.create :text => scrambled_words,
