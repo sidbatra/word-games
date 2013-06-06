@@ -1,10 +1,10 @@
 $('#spinner').hide();
 
-<%if @unscrambled_words.present?%>
-  $('#unscrambled_words').append("<%=escape_javascript(
+<%if @solved_words.present?%>
+  $('#solved_words').append("<%=escape_javascript(
     render(
       :partial => "words/result",
-      :collection => @unscrambled_words,
+      :collection => @solved_words,
       :as => :word))%>");
 <%else%>
   $('#no_matches_found').show();

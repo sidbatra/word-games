@@ -20,13 +20,13 @@
       Type a jumbled word in the box & press enter
     </p> 
 
-    <%=form_tag unscramble_index_path, 
+    <%=form_tag solver_index_path, 
         :method => :get, 
         :remote => true,
-        :id => "unscramble" do%>
+        :id => "solver" do%>
 
-      <input id="scrambled_word" 
-        name="scrambled_words"
+      <input id="word" 
+        name="word"
         type="text" 
         class="input-xlarge">
 
@@ -44,7 +44,7 @@
       </div>
     </div>
 
-    <div id="unscrambled_words">
+    <div id="solved_words">
     </div>
     
   </div>
@@ -73,11 +73,11 @@
 
 <%=content_for :javascript do%>
 <script type="text/javascript">
-  $('#scrambled_word').focus();
+  $('#word').focus();
 
-  $('#unscramble').submit(function(){
+  $('#solver').submit(function(){
     $('#no_matches_found').hide();
-    $('#unscrambled_words').html('');
+    $('#solved_words').html('');
     $('#spinner').show();
   });
 </script>

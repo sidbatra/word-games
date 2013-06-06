@@ -1,5 +1,5 @@
 Wordgames::Application.routes.draw do
-  resources :unscramble, :only => :index
+  resources :solver, :only => :index
 
-  root :to => 'unscramble#new'
+  root :to => 'solver#new'
 end

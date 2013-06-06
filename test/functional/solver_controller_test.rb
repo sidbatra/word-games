@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UnscrambleControllerTest < ActionController::TestCase
+class SolverControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end
