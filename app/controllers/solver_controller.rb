@@ -5,14 +5,18 @@ class SolverController < ApplicationController
   end
 
   def index
+    @operation = params[:operation].to_i
     @solved_words = []
     word = params[:word].downcase
 
-    @solved_words += WordProcessor.unscramble(word)
+    case @operation
+    when Operation::Jumble
+      @solved_words += WordProcessor.unscramble(word)
+    end
 
     Query.create :text => word,
       :ip => request.remote_ip,
-      :operation => 0
+      :operation => @operation
   end
 
 end

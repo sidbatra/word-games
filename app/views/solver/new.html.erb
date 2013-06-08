@@ -24,6 +24,8 @@
         :method => :get, 
         :remote => true,
         :id => "solver" do%>
+      
+      <%= hidden_field_tag :operation, Operation::Jumble%>
 
       <input id="word" 
         name="word"
