@@ -2,6 +2,14 @@ class SolverController < ApplicationController
   respond_to :js, :only => :index
 
   def new
+    @operation = Operation::Jumble
+
+    case request.host.downcase
+    when /.*crossword.*/
+      @operation = Operation::Crossword
+    when /.*scrabble.*/
+      @operation = Operation::Scrabble
+    end
   end
 
   def index
@@ -11,7 +19,9 @@ class SolverController < ApplicationController
 
     case @operation
     when Operation::Jumble
-      @solved_words += WordProcessor.unscramble(word)
+      @solved_words += WordProcessor.unscramble word
+    when Operation::Crossword
+      @solved_words += WordProcessor.fill_in_the_blanks word
     end
 
     Query.create :text => word,

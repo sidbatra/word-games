@@ -1,11 +1,23 @@
 <div class="container-narrow">
 
   <div class="masthead">
-    <!--ul class="nav nav-pills pull-right">
-      <li class="active"><a href="#">Jumble</a></li>
-      <li><a href="#">Anagram</a></li>
-      <li><a href="#">Crossword</a></li>
-    </ul-->
+    <ul class="nav nav-pills pull-right">
+      <li <%=apply_active_class Operation::Jumble,@operation%>>
+        <a href="http://solvethatjumble.com">
+          Jumble
+        </a>
+      </li>
+      <li <%=apply_active_class Operation::Crossword,@operation%>>
+        <a href="http://solvethatcrossword.com">
+          Crossword
+        </a>
+      </li>
+      <!--li <%=apply_active_class Operation::Scrabble,@operation%>>
+        <a href="#">
+          Scrabble
+        </a>
+      </li-->
+    </ul>
     <h3 class="muted">Word Games</h3>
   </div>
 
@@ -13,11 +25,39 @@
 
   <div class="jumbotron">
     <h1>
-      Jumble Solver
+      <%if @operation == Operation::Jumble%>
+
+        <%content_for :title do%>
+          Jumble Solver
+        <%end%>
+
+        <%content_for :description do%>
+          Jumble solver for instantly solving those annoying 
+          jumble word problems
+        <%end%>
+
+        Jumble Solver
+      <%elsif @operation == Operation::Crossword%>
+
+        <%content_for :title do%>
+          Crossword Solver
+        <%end%>
+
+        <%content_for :description do%>
+          Crossword solver for instantly solving those annoying 
+          crossword clues
+        <%end%>
+
+        Crossword Solver
+      <%end%>
     </h1>
 
     <p class="lead">
-      Type a jumbled word in the box & press enter
+      <%if @operation == Operation::Jumble%>
+        Type a jumbled word & press enter
+      <%elsif @operation == Operation::Crossword%>
+        Type ? for unknown letters (eg: cro?sw?rd) & press enter
+      <%end%>
     </p> 
 
     <%=form_tag solver_index_path, 
@@ -25,7 +65,7 @@
         :remote => true,
         :id => "solver" do%>
       
-      <%= hidden_field_tag :operation, Operation::Jumble%>
+      <%= hidden_field_tag :operation, @operation%>
 
       <input id="word" 
         name="word"
@@ -41,7 +81,7 @@
     <div id="no_matches_found" class="row" style="display: none">
       <div class="span3 offset3">
         <div class="alert text-center">
-          Sorry, no jumbles found.
+          Sorry, no words found.
         </div>
       </div>
     </div>
@@ -53,15 +93,18 @@
 
   <hr>
 
-  <div class="footer" style="">
-      <a href="https://twitter.com/share" 
-          class="twitter-share-button" 
-          style="vertical-align:top;height:63px;"
-          data-url="http://solvethatjumble.com" 
-          data-text="The easiest way to solve that annoying word jumble" 
-          data-count="none"
-          data-hashtags="jumble">Tweet
-      </a>
+  <div class="footer">
+    <%if @operation == Operation::Jumble%>
+      <%=render :partial => "misc/tweet_button",
+          :locals => {
+            :text => "The easiest way to solve that annoying word jumble",
+            :hashtag => "jumble"}%>
+    <%elsif @operation == Operation::Crossword%>
+      <%=render :partial => "misc/tweet_button",
+          :locals => {
+            :text => "The easiest way to solve that annoying crossword clue",
+            :hashtag => "crossword"}%>
+    <%end%>
 
       <span style="float:right">
         Made with love by 
