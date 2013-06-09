@@ -12,11 +12,11 @@
           Crossword
         </a>
       </li>
-      <!--li <%=apply_active_class Operation::Scrabble,@operation%>>
-        <a href="#">
+      <li <%=apply_active_class Operation::Scrabble,@operation%>>
+        <a href="http://solvethatscrabble.com">
           Scrabble
         </a>
-      </li-->
+      </li>
     </ul>
     <h3 class="muted">Word Games</h3>
   </div>
@@ -49,6 +49,18 @@
         <%end%>
 
         Crossword Solver
+      <%elsif @operation == Operation::Scrabble%>
+
+        <%content_for :title do%>
+          Scrabble Solver
+        <%end%>
+
+        <%content_for :description do%>
+          Scrabble solver for instant magical suggestions on words
+          to make
+        <%end%>
+
+        Scrabble Solver
       <%end%>
     </h1>
 
@@ -57,6 +69,8 @@
         Type a jumbled word & press enter
       <%elsif @operation == Operation::Crossword%>
         Type ? for unknown letters (eg: cro?sw?rd) & press enter
+      <%elsif @operation == Operation::Scrabble%>
+        Type the letters on your tiles (use ? for blank tiles) & press enter
       <%end%>
     </p> 
 
@@ -104,6 +118,11 @@
           :locals => {
             :text => "The easiest way to solve that annoying crossword clue",
             :hashtag => "crossword"}%>
+    <%elsif @operation == Operation::Scrabble%>
+      <%=render :partial => "misc/tweet_button",
+          :locals => {
+            :text => "The easiest way to get instant suggestions for scrabble words",
+            :hashtag => "scrabble"}%>
     <%end%>
 
       <span style="float:right">
