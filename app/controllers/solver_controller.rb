@@ -2,13 +2,16 @@ class SolverController < ApplicationController
   respond_to :js, :only => :index
 
   def new
-    @operation = Operation::Jumble
-
     case request.host.downcase
     when /.*crossword.*/
       @operation = Operation::Crossword
+      @google_analytics_id = "UA-38966972-2"
     when /.*scrabble.*/
       @operation = Operation::Scrabble
+      @google_analytics_id = "UA-38966972-3"
+    else
+      @operation = Operation::Jumble
+      @google_analytics_id = "UA-38966972-1"
     end
   end
 
