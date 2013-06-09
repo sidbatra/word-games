@@ -18,13 +18,13 @@ module WordProcessor
       pluck(:text)
   end
 
-  # Generate anagrams of length 3 and above from the given word.
+  # Generate anagrams of length 2 and above from the given word.
   #
   def self.anagram(word)
     words = Set.new
     chars = word.gsub('?','_').split(//)
 
-    (3..chars.length).each do |length|
+    (2..chars.length).each do |length|
       chars.combination(length).each do |combination|
         blank_count = combination.count '_'
         sorted_combination = combination.sort.join
