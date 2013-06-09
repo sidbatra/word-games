@@ -22,6 +22,8 @@ class SolverController < ApplicationController
       @solved_words += WordProcessor.unscramble word
     when Operation::Crossword
       @solved_words += WordProcessor.fill_in_the_blanks word
+    when Operation::Scrabble
+      @solved_words += WordProcessor.anagram word
     end
 
     Query.create :text => word,
