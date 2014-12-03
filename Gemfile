@@ -11,9 +11,12 @@ gem 'rails_12factor', group: :production
 
 gem 'pg'
 gem 'upsert'
+
+# Rack caching of static assets in memcache
 gem 'rack-cache'
 gem 'dalli'
 gem 'kgio'
+gem 'memcachier'
 
 gem 'sass-rails',   '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
