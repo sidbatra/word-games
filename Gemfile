@@ -11,6 +11,9 @@ gem 'rails_12factor', group: :production
 
 gem 'pg'
 gem 'upsert'
+gem 'rack-cache'
+gem 'dalli'
+gem 'kgio'
 
 gem 'sass-rails',   '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'

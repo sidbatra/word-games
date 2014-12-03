@@ -35,6 +35,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    dalli (2.7.2)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -53,6 +54,8 @@ GEM
     pg (0.16.0)
     polyglot (0.3.3)
     rack (1.5.2)
+    rack-cache (1.2)
+      rack (>= 0.4)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.0)
@@ -111,8 +114,11 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  dalli
   jquery-rails
+  kgio
   pg
+  rack-cache
   rails (= 4.0.0)
   rails_12factor
   sass-rails (~> 4.0.0)

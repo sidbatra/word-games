@@ -18,9 +18,23 @@ Wordgames::Application.configure do
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
   # config.action_dispatch.rack_cache = true
+  client = Dalli::Client.new((ENV["MEMCACHIER_SERVERS"] || "").split(","),
+                           :username => ENV["MEMCACHIER_USERNAME"],
+                           :password => ENV["MEMCACHIER_PASSWORD"],
+                           :failover => true,
+                           :socket_timeout => 1.5,
+                           :socket_failure_delay => 0.2,
+                           :value_max_bytes => 10485760)
+  config.action_dispatch.rack_cache = {
+    :metastore    => client,
+    :entitystore  => client
+  }
+
+  config.static_cache_control = "public, max-age=2592000"
+
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
